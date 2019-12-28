@@ -1,5 +1,4 @@
-dbPassword =
-  "mongodb+srv://test:test@test-app-cycly.mongodb.net/test?retryWrites=true&w=majority";
+dbPassword = "";
 
 module.exports = {
   mongoURL: dbPassword,
