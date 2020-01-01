@@ -1,0 +1,134 @@
+:root {
+    --Rubik: "Rubik", cursive;
+    --bggradient: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
+}
+
+body {
+    background: var(--bggradient);
+    font-family: var(--Rubik);
+}
+
+#container {
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;
+    text-align: center;
+    background: white;
+    overflow-y: auto;
+    color: black;
+    border: 4px solid black;
+    border-radius: 5px;
+}
+
+#container h1 {
+    margin-top: 35px;
+    margin-bottom: 50px;
+    font-size: 2.5em;
+}
+
+#container .control {
+    width: 60%;
+    margin: auto;
+}
+
+#container .controls #input {
+    width: 95%;
+    height: 40px;
+    font-size: 27px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    border: 2px solid #00d2ff;
+    border-radius: 10px;
+}
+
+#container .controls #input:focus {
+    outline: 0;
+}
+
+#container .controls button {
+    width: 45%;
+    background: white;
+    border: none;
+    height: 35px;
+    margin: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+#container .controls button:focus {
+    outline: 0;
+}
+
+#container .controls button:hover {
+    transform: scale(1.1);
+}
+
+#container .controls #add {
+    background-color: #4834d4;
+    border-radius: 10px;
+}
+
+#container .controls #remove {
+    background-color: #d63031;
+    border-radius: 10px;
+}
+
+#container ul {
+    margin-top: 35px;
+    padding-left: 0;
+}
+
+#container ul li {
+    list-style: none;
+    border: 2px solid #b5c5dd;
+    width: 95%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    height: 40px;
+    margin: 5px auto;
+    text-align: left;
+}
+
+#container ul li label {
+    margin: 0 auto;
+    vertical-align: middle;
+    height: 100%;
+    line-height: 40px;
+    font-size: 18px;
+}
+
+#container ul li #check {
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    -webkit-appearance: none;
+    border: 2px solid #b5c5dd;
+    position: relative;
+    outline: 0;
+}
+
+#container ul li #check:checked:after {
+    content: '\2714';
+    font-size: 20px;
+    position: absolute;
+    top: 0px;
+    left: 4px;
+    color: black;
+}
+
+#container ul li input[type="checkbox"]:checked+label {
+    text-decoration: line-through;
+    color: rgba(0, 0, 0 .3);
+}
+
+#container .mycheck {
+    opacity: 1;
+    border-radius: 10px;
+}
+
+.visual {
+    opacity: 1 !important;
+    border-radius: 10px;
+}
