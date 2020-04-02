@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignmet</title>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        word-break: break-all;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+
+      .main {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .table {
+        table-layout: auto;
+        width: 100%;
+      }
+
+      td,
+      th {
+        margin: 5px;
+        padding: 8px;
+      }
+
+      .add-button {
+        width: 250px;
+        height: 35px;
+        font-weight: 900;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
+        background-color: lightblue;
+      }
+
+      .button {
+        width: 80px;
+        height: 25px;
+        margin: 3px;
+        font-weight: 900;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
+        background-color: lightblue;
+      }
+
+      .add-todo {
+        display: none;
+      }
+
+      .padd {
+        margin-bottom: 25px;
+      }
+
+      .block {
+        display: none;
+      }
+
+      .unblock {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="add-btn" id="Main-Form-Btn">
+        <button class="add-button" onclick="show()">ADD TODO</button>
+      </div>
+      <div class="add-todo" id="Main-Form">
+        <input type="text" id="text" name="text" />
+        <button class="button" onclick="add()">Okay</button>
+        <button class="button" onclick="cancel()">Cancel</button>
+      </div>
+      <div class="padd"></div>
+      <table id="list">
+        <tr>
+          <th>S.No.</th>
+          <th>Name Field</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+        <tr class="lists">
+          <td>1</td>
+          <td>Have Lunch</td>
+          <td align="center">
+            <button onclick="update(this)">
+              <i class="fas fa-pen"></i>
+            </button>
+          </td>
+          <td align="center">
+            <button onclick="del(this)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        <tr class="lists">
+          <td>2</td>
+          <td>Buy Clothes</td>
+          <td align="center">
+            <button onclick="update(this)">
+              <i class="fas fa-pen"></i>
+            </button>
+          </td>
+          <td align="center">
+            <button onclick="del(this)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        <tr class="lists">
+          <td>3</td>
+          <td>Read Docs</td>
+          <td align="center">
+            <button onclick="update(this)">
+              <i class="fas fa-pen"></i>
+            </button>
+          </td>
+          <td align="center">
+            <button onclick="del(this)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <script type="text/javascript">
+      var s = 4;
+
+      function show() {
+        document.getElementById("Main-Form").classList = "unblock";
+        document.getElementById("Main-Form-Btn").classList = "block";
+      }
+
+      function add() {
+        var x = document.getElementById("text").value;
+        if (x != "") {
+          var node = document.createElement("tr");
+          node.setAttribute("class", "lists");
+
+          var serialNo = document.createElement("td");
+          serialNo.innerText = s;
+          s = s + 1;
+
+          var todo = document.createElement("td");
+          todo.innerText = x;
+
+          var update = document.createElement("td");
+          var updateBtn = document.createElement("button");
+          updateBtn.setAttribute("onclick", "update(this)");
+          updateBtn.setAttribute("align", "center");
+          var updateIcon = document.createElement("i");
+          updateIcon.setAttribute("class", "fas fa-pen");
+          updateBtn.append(updateIcon);
+          update.appendChild(updateBtn);
+
+          var del = document.createElement("td");
+          var delBtn = document.createElement("button");
+          delBtn.setAttribute("onclick", "del(this)");
+          delBtn.setAttribute("align", "center");
+          var delIcon = document.createElement("i");
+          delIcon.setAttribute("class", "fas fa-trash");
+          delBtn.append(delIcon);
+          del.appendChild(delBtn);
+
+          node.appendChild(serialNo);
+          node.appendChild(todo);
+          node.appendChild(update);
+          node.appendChild(del);
+
+          document.getElementById("list").appendChild(node);
+          document.getElementById("text").value = "";
+
+          document.getElementById("Main-Form").classList = "block";
+          document.getElementById("Main-Form-Btn").classList = "unblock";
+        }
+      }
+
+      function cancel() {
+        document.getElementById("Main-Form").classList = "block";
+        document.getElementById("Main-Form-Btn").classList = "unblock";
+      }
+
+      function del(element) {
+        var parent = element.parentNode.parentNode;
+        parent.remove();
+      }
+
+      function update(element) {
+        document.getElementById("Main-Form").classList = "unblock";
+        document.getElementById("Main-Form-Btn").classList = "block";
+
+        var parent = element.parentNode.parentNode;
+        document.getElementById("text").value = parent.childNodes[3].innerText;
+        del(element);
+      }
+    </script>
+  </body>
+</html>
